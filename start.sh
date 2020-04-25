@@ -1,6 +1,6 @@
 #!/bin/bash
 
-service apache2 stop
+sudo service apache2 stop
 
 docker start nginx-letsencrypt
 docker start nginx-reverse-proxy
@@ -14,4 +14,4 @@ docker start dev
 docker start api
 docker start cacas
 docker start cloud
-./../docker/create/redmine-ssl.sh
+#./../docker/create/redmine-ssl.sh

@@ -3,6 +3,7 @@
 docker stop nginx-reverse-proxy
 docker rm nginx-reverse-proxy
 
+
 readonly VOLUMES="-v $(pwd)/storage/certs:/etc/nginx/certs:ro \
 	-v /etc/nginx/vhost.d \
 	-v $(pwd)/storage/custom.conf:/etc/nginx/conf.d/custom.conf:ro \
