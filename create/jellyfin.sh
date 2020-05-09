@@ -19,6 +19,7 @@ docker create \
    -e PGID=1000 \
    --expose 80 \
   -e TZ=Europe/London \
+  -e VIRTUAL_PORT=8096 \
   -p 8896:8096 \
   -v /home/docker/storage/${HOST}:/config \
    -v /mnt/disk2/tvSeries-animation/:/media/tv-anim/ \

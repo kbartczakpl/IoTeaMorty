@@ -20,6 +20,7 @@ docker create \
   -p 51414:51413 \
   -p 51414:51413/udp \
   -v /home/docker/storage/${NAME}/:/config \
+  -v /home/kbartczak/docker/tmp/:/transmission-web-control/tmp/transmission \
   -v /data/transmission-incomplete/:/downloads \
   -v /data/transmission-watch/:/watch \
   --restart unless-stopped \
