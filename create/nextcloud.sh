@@ -2,6 +2,14 @@
 
 readonly HOST="cloud2.bartczak.eu"
 readonly NAME="nextcloud"
+readonly IMAGE="nextcloud"
+
+
+docker pull ${IMAGE}
+
+docker stop ${NAME}
+docker rm ${NAME}
+
 
 docker create \
    --name=${NAME} \
@@ -13,6 +21,6 @@ docker create \
    -v /home/docker/storage/${NAME}/apps:/var/www/html/apps \
    -v /home/docker/storage/${NAME}/config:/var/www/html/config \
    -v /data/${NAME}:/var/www/html/data \
-    owncloud:latest
+   ${IMAGE}
 
 docker start ${NAME}
