@@ -1,7 +1,7 @@
 #!/bin/bash
 
 readonly NAME="mariadb"
-readonly IMAGE="mariadb:tag"
+readonly IMAGE="mariadb:latest"
 
 docker pull ${IMAGE}
 
@@ -12,7 +12,7 @@ docker create \
    --name=${NAME} \
    -e MYSQL_ROOT_PASSWORD=/run/secrets/MYSQL_ROOT_PASSWORD \
    -e MYSQL_USER=/run/secrets/MYSQL_USER \
-   -v /media/docker-storage/${NAME}:/var/lib/mysql
+   -v /media/docker-storage/${NAME}:/var/lib/mysql \
    ${IMAGE}
 
 docker start ${NAME}
