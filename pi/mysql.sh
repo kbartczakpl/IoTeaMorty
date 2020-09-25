@@ -8,16 +8,10 @@ docker pull ${IMAGE}
 docker stop ${NAME}
 docker rm ${NAME}
 
-
-P_PASS=""
-
-echo "$(tput setaf 1)Podaj hasło uzytkownika root:$(tput sgr 0)"
-read P_PASS
-
-
 docker create \
    --name=${NAME} \
    -e MYSQL_ROOT_PASSWORD=/run/secrets/MYSQL_ROOT_PASSWORD \
+   -e MYSQL_USER=/run/secrets/MYSQL_USER \
    -d ${IMAGE}
 
 docker start ${NAME}
