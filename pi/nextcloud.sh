@@ -17,6 +17,7 @@ docker create \
    -v /media/docker/storage/${NAME}/apps:/var/www/html/apps \
    -v /media/docker/storage/${NAME}/config:/var/www/html/config \
    -v /media/docker/${NAME}/data:/var/www/html/data \
+   --restart unless-stopped \
    ${IMAGE}
 
 docker start ${NAME}
