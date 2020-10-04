@@ -10,8 +10,10 @@ docker rm ${NAME}
 
 docker create \
    --name=${NAME} \
-   -e MYSQL_ROOT_PASSWORD=/run/secrets/${NAME}/root_password \
+   -e MYSQL_ROOT_PASSWORD_FILE=/tmp/root_password \
+   -v $(pwd)/run/secrets/${NAME}/root_password:/tmp/root_password \
    -v /media/docker/storage/${NAME}:/var/lib/mysql \
+   -p 3306:3306 \
    ${IMAGE}
 
 docker start ${NAME}

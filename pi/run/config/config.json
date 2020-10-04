@@ -1,0 +1,10 @@
+{
+  "database": {
+    "engine": "mysql",
+    "host": "mariadb",
+    "name": "proxy-manager",
+    "user": "proxy-manager",
+    "password": "2mwd2ioj1@sdw",
+    "port": 3306
+  }
+}
