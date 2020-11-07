@@ -12,8 +12,8 @@ docker create \
    --name=${NAME} \
    --link mariadb:mariadb \
    -v $(pwd)/run/config/proxy-manager/config.json:/app/config/production.json \
-   -v /media/docker/storage/proxy-manager/data:/data \
-   -v /media/docker/storage/proxy-manager/letsencrypt:/etc/letsencrypt \
+   -v /media/docker/${NAME}/data:/data \
+   -v /media/docker/${NAME}/letsencrypt:/etc/letsencrypt \
    -p 80:80 \
    -p 81:81 \
    -p 443:443 \
