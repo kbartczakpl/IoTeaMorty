@@ -16,8 +16,8 @@ docker create \
   -e TZ=Europe/London \
   -p 7878:7878 \
   -v /media/docker/${NAME}/config:/config \
-  -v /media/tv/movies:/movies \
-  -v /media/tv//movies-animation:/movies-animation \
+  -v /media/cinema/movies:/movies \
+  -v /media/cinema/movies-animation:/movies-animation \
   -v /media/transmission/downloads/:/downloads \
   --restart unless-stopped \
   ${IMAGE}
