@@ -15,8 +15,9 @@ docker create \
   -p 9180:8080 \
   -p 6144:6144 \
   -p 1443:1443 \
+  -p 1883:1883 \
   -v /media/docker/${NAME}/config:/config \
   --restart unless-stopped \
-  ${IMAGE}:stable
+  ${IMAGE}
 
 docker start ${NAME}
