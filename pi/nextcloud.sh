@@ -1,7 +1,7 @@
 #!/bin/bash
 
 readonly NAME="nextcloud"
-readonly IMAGE="nextcloud"
+readonly IMAGE="nextcloud:19"
 
 
 docker pull ${IMAGE}
