@@ -3,8 +3,8 @@
     "engine": "mysql",
     "host": "mariadb",
     "name": "proxy-manager",
-    "user": "proxy-manager",
-    "password": "2mwd2ioj1@sdw",
+    "user": "hi",
+    "password": "4En6zs7JnA6Y4H",
     "port": 3306
   },
   "jwt": {

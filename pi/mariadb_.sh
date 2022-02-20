@@ -1,7 +1,7 @@
 #!/bin/bash
 
-readonly NAME="mariadb_10_2"
-readonly IMAGE="mariadb:10.2"
+readonly NAME="mariadb"
+readonly IMAGE="lscr.io/linuxserver/mariadb"
 
 docker pull ${IMAGE}
 
@@ -10,10 +10,12 @@ docker rm ${NAME}
 
 docker create \
    --name=${NAME} \
+   -e PUID=1000 \
+   -e PGID=1000 \
    -e MYSQL_ROOT_PASSWORD_FILE=/secrets/mariadb/root_password \
    -v $(pwd)/run/secrets:/secrets \
-   -v /media/docker/${NAME}/mysql:/var/lib/mysql \
-   -v /media/docker/${NAME}/conf:/etc/mysql/conf.d \
+   -e TZ=Europe/London \
+   -v /media/docker/${NAME}:/config \
    -p 3306:3306 \
    --restart unless-stopped \
    ${IMAGE}
