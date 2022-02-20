@@ -8,11 +8,24 @@ services:
       - PGID=1000
       - FILE__MYSQL_ROOT_PASSWORD=/tmp/secrets/root_password
       - TZ=Europe/London
-      - FILE__MYSQL_USER=/tmp/secrets/user
-      - FILE__MYSQL_PASSWORD=/tmp/secrets/password
     volumes:
       - /opt/appdata/mariadb:/config
       - ./run/secrets/mariadb:/tmp/secrets
     ports:
       - 3306:3306
+    restart: unless-stopped
+  nextcloud:
+    image: lscr.io/linuxserver/nextcloud
+    container_name: nextcloud
+    links:
+      - "mariadb:mariadb"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /opt/appdata/nextcloud:/config
+      - /media/docker/nextcloud:/data
+    ports:
+      - 443:443
     restart: unless-stopped
