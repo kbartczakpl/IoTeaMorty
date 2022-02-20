@@ -6,10 +6,10 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - MYSQL_ROOT_PASSWORD=/tmp/secrets/root_password
+      - FILE__MYSQL_ROOT_PASSWORD=/tmp/secrets/root_password
       - TZ=Europe/London
-      - MYSQL_USER=/tmp/secrets/user #optional
-      - MYSQL_PASSWORD=/tmp/secrets/password #optionaloptional
+      - FILE__MYSQL_USER=/tmp/secrets/user
+      - FILE__MYSQL_PASSWORD=/tmp/secrets/password
     volumes:
       - /opt/appdata/mariadb:/config
       - ./run/secrets/mariadb:/tmp/secrets
