@@ -8,11 +8,10 @@ services:
       - PGID=1000
       - MYSQL_ROOT_PASSWORD=/tmp/secrets/root_password
       - TZ=Europe/London
-      # - MYSQL_DATABASE=USER_DB_NAME #optional
-      # - MYSQL_USER=MYSQL_USER #optional
-      # - MYSQL_PASSWORD=DATABASE_PASSWORD #optionaloptional
+      - MYSQL_USER=/tmp/secrets/user #optional
+      - MYSQL_PASSWORD=/tmp/secrets/password #optionaloptional
     volumes:
-      - /media/docker/mariadb:/config
+      - /opt/appdata/mariadb:/config
       - ./run/secrets/mariadb:/tmp/secrets
     ports:
       - 3306:3306
