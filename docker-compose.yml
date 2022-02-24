@@ -25,3 +25,15 @@ services:
     volumes:
       - /opt/appdata/nextcloud:/var/www/html/config
       - /media/docker/nextcloud:/var/www/html/data
+  proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: proxy-manager
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - /opt/appdata/proxy-manager/data:/data
+      - /opt/appdata/proxy-manager/letsencrypt:/etc/letsencrypt
+      - ./config.json:./run/config/config.json
