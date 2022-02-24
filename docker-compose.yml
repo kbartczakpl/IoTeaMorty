@@ -15,17 +15,22 @@ services:
       - 3306:3306
     restart: unless-stopped
   nextcloud:
-    image: lscr.io/linuxserver/nextcloud
-    container_name: nextcloud
-    links:
-      - "mariadb:mariadb"
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
-    volumes:
-      - /opt/appdata/nextcloud:/config
-      - /media/docker/nextcloud:/data
-    ports:
-      - 443:443
+    image: nextcloud
     restart: unless-stopped
+    ports:
+      - 8080:80
+    links:
+      - mariadb
+    volumes:
+      - /opt/appdata/nextcloud:/var/www/html/config
+      - /media/docker/nextcloud:/var/www/html/data
+    environment:
+      - MYSQL_PASSWORD_FILE=/run/secrets/mysql_password
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=mariadb
+    secrets:
+      - mysql_password
+secrets:
+  nextcloud_admin_password:
+    file: ./run/secrets/nextcloud/mysql_password
