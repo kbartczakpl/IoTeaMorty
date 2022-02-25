@@ -36,4 +36,22 @@ services:
     volumes:
       - /opt/appdata/proxy-manager/data:/data
       - /opt/appdata/proxy-manager/letsencrypt:/etc/letsencrypt
-      - ./run/config/proxy-manager/config.json:/app/config/production.json
+      - ./config.json:./run/config/config.json
+  jellyfin:
+      image: lscr.io/linuxserver/jellyfin
+      container_name: jellyfin
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/London
+        - JELLYFIN_PublishedServerUrl=play.bartczak.eu #optional
+      volumes:
+        - /path/to/library:/config
+        - /path/to/tvseries:/data/tvshows
+        - /path/to/movies:/data/movies
+      ports:
+        - 8096:8096
+        - 8920:8920 #optional
+        - 7359:7359/udp #optional
+        - 1900:1900/udp #optional
+      restart: unless-stopped
