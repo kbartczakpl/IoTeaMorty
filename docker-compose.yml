@@ -36,7 +36,7 @@ services:
     volumes:
       - /opt/appdata/proxy-manager/data:/data
       - /opt/appdata/proxy-manager/letsencrypt:/etc/letsencrypt
-      - ./config.json:./run/config/config.json
+      - ./run/config/proxy-manager/config.json:/app/config/production.json
   jellyfin:
       image: lscr.io/linuxserver/jellyfin
       container_name: jellyfin
