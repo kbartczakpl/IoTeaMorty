@@ -46,9 +46,12 @@ services:
         - TZ=Europe/London
         - JELLYFIN_PublishedServerUrl=play.bartczak.eu #optional
       volumes:
-        - /path/to/library:/config
-        - /path/to/tvseries:/data/tvshows
-        - /path/to/movies:/data/movies
+        - /opt/appdata/jellyfin/config:/config
+        - /media/cinema/movies:/media/cinema/movies
+        - /media/cinema/movies-animation:/media/cinema/movies-animation
+        - /media/tv/tvSeries:/media/tv/tvSeries
+        - /media/tv/tvSeries-animation:/media/tv/tvSeries-animation
+        - /media/priv/movies:/media/priv/movies
       ports:
         - 8096:8096
         - 8920:8920 #optional
