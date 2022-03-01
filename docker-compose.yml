@@ -27,7 +27,7 @@ services:
       - /media/docker/nextcloud:/var/www/html/data
   proxy-manager:
     image: 'jc21/nginx-proxy-manager:latest'
-    container_name: proxy-manager
+    container_name: 'proxy-manager'
     restart: unless-stopped
     ports:
       - '80:80'
@@ -46,7 +46,7 @@ services:
         - TZ=Europe/London
         - JELLYFIN_PublishedServerUrl=play.bartczak.eu #optional
       volumes:
-        - /opt/appdata/jellyfin/config:/config
+        - /opt/appdata/jellyfin/:/config
         - /media/cinema/movies:/media/cinema/movies
         - /media/cinema/movies-animation:/media/cinema/movies-animation
         - /media/tv/tvSeries:/media/tv/tvSeries
