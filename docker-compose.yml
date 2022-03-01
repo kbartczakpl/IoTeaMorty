@@ -58,3 +58,19 @@ services:
         - 7359:7359/udp #optional
         - 1900:1900/udp #optional
       restart: unless-stopped
+  flexget:
+    image: wiserain/flexget
+    container_name: flexget
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - FG_WEBUI_PASSWD=579128
+      - FG_LOG_LEVEL=info
+      - FG_LOG_FILE=flexget.log
+    volumes:
+      - /opt/appdata/flexget/config:/config
+      - /opt/appdata/flexget/data:/data
+    ports:
+      - 5050:5050
+    restart: unless-stopped
