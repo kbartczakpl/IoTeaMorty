@@ -1,6 +1,9 @@
 #!/bin/bash
 
-docker run -d \
+docker stop fget
+docker rm fget
+
+docker create \
     --name=fget \
     -p 5050:5050 \
     -v $(pwd)/fget/data:/data \
@@ -12,3 +15,5 @@ docker run -d \
     -e PGID=1000 \
     -e TZ=Europe/London \
     wiserain/flexget
+
+docker start fget
