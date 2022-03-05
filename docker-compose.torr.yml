@@ -1,0 +1,33 @@
+version: "2.1"
+services:
+  # deluge:
+  #   image: linuxserver/deluge:latest
+  #   restart: unless-stopped
+  #   environment:
+  #     - PUID=113
+  #     - PGID=1001
+  #     - UMASK_SET=002
+  #     - TZ=Europe/London
+  #   volumes:
+  #     - ./x/deluge/config:/config
+  #     - ./x/deluge/trigger-decompress.sh:/usr/local/bin/trigger-decompress.sh:ro
+  #     - ./x/deluge/downloads:/downloads
+  #     - ./x/media/raid/videos:/videos
+  flexget:
+    image: cpoppema/docker-flexget:latest
+    restart: unless-stopped
+    environment:
+      - PUID=112
+      - PGID=1001
+      - TZ=Europe/London
+      - TORRENT_PLUGIN=deluge
+      - FLEXGET_LOG_LEVEL=info
+    ports:
+      - 5055:5050
+    volumes:
+      - ./x/flexget:/config
+      - ./x/flexget/99-install-other-deps:/etc/cont-init.d/99-install-other-deps:ro
+      - ./x/dbox/dropbox/Flexget/db-config.sqlite:/config/db-config.sqlite
+      - ./x/dbox/dropbox/Flexget/secretfile.yml:/config/secretfile.yml:ro
+      - ./x/deluge/downloads:/downloads:ro
+      - ./x/media/raid/videos:/videos
