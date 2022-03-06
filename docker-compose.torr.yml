@@ -13,21 +13,36 @@ services:
   #     - ./x/deluge/trigger-decompress.sh:/usr/local/bin/trigger-decompress.sh:ro
   #     - ./x/deluge/downloads:/downloads
   #     - ./x/media/raid/videos:/videos
+  # flexget:
+  #  image: cpoppema/docker-flexget:latest
+  #  restart: unless-stopped
+  #  environment:
+  #    - PUID=1000
+  #    - PGID=1000
+  #    - TZ=Europe/London
+  #    - TORRENT_PLUGIN=deluge
+  #    - FLEXGET_LOG_LEVEL=info
+  #  ports:
+  #    - 5055:5050
+  #  volumes:
+  #  - ./x/flexget:/config
+  #    - ./x/flexget/99-install-other-deps:/etc/cont-init.d/99-install-other-deps:ro
+  #    - ./x/dbox/dropbox/Flexget/db-config.sqlite:/config/db-config.sqlite
+  #    - ./x/dbox/dropbox/Flexget/secretfile.yml:/config/secretfile.yml:ro
+  #    - ./x/deluge/downloads:/downloads:ro
+  #    - ./x/media/raid/videos:/videos
   flexget:
-    image: cpoppema/docker-flexget:latest
-    restart: unless-stopped
+    image: wiserain/flexget
+    container_name: flexget
+    restart: always
     environment:
-      - PUID=112
-      - PGID=1001
+      - PUID=998
+      - PGID=998
       - TZ=Europe/London
-      - TORRENT_PLUGIN=deluge
-      - FLEXGET_LOG_LEVEL=info
+      - FG_WEBUI_PASSWD=qweQWE123!@#
+      - FG_LOG_LEVEL=info
     ports:
-      - 5055:5050
+      - 5050:5050
     volumes:
-      - ./x/flexget:/config
-      - ./x/flexget/99-install-other-deps:/etc/cont-init.d/99-install-other-deps:ro
-      - ./x/dbox/dropbox/Flexget/db-config.sqlite:/config/db-config.sqlite
-      - ./x/dbox/dropbox/Flexget/secretfile.yml:/config/secretfile.yml:ro
-      - ./x/deluge/downloads:/downloads:ro
-      - ./x/media/raid/videos:/videos
+      - ./ss/flexget:/config
+      - ./ss/tank/Video:/tank/Video
