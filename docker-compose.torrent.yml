@@ -6,7 +6,7 @@ services:
     restart: always
     volumes:
       - /opt/appdata/transmission-rss/transmission-rss.conf:/etc/transmission-rss.conf
-      - /opt/appdata/transmission-rss/.config:~/.config
+      - /opt/appdata/transmission-rss/.config:/home/ruby/transmission-rss/.config
   transmission:
     image: lscr.io/linuxserver/transmission
     container_name: transmission
