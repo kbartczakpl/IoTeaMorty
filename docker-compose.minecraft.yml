@@ -2,15 +2,19 @@ version: '2.1'
 services:
   mc:
     image: itzg/minecraft-server
-    container_name: mine:25565
+    container_name: mine
     ports:
       - 25565:25565
     environment:
       EULA: "TRUE"
       MODE: survival
+      DIFFICULTY: normal
       SERVER_NAME: Morty
     tty: true
     stdin_open: true
     restart: unless-stopped
     volumes:
-      - /media/docker/minecraft/:/data
+      - bds:/data
+
+volumes:
+  bds: {}
