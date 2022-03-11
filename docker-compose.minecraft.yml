@@ -15,6 +15,22 @@ services:
     restart: unless-stopped
     volumes:
       - mine:/data
+  mchi:
+    image: itzg/minecraft-bedrock-server
+    container_name: mine-hi
+    ports:
+      - 12311:19132/udp
+    environment:
+      EULA: "TRUE"
+      MODE: survival
+      DIFFICULTY: normal
+      SERVER_NAME: Morty
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    volumes:
+      - mine-hi:/data
 
 volumes:
   mine: {}
+  mine-hi: {}
