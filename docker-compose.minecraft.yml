@@ -1,20 +1,20 @@
 version: '2.1'
 services:
   mc:
-    image: itzg/minecraft-bedrock-server
-    container_name: mine
+    image: itzg/minecraft-server
     ports:
-      - 12312:19132/udp
+      - "12300:25565"
+    volumes:
+      - "mc:/data"
     environment:
       EULA: "TRUE"
-      MODE: survival
-      DIFFICULTY: normal
-      SERVER_NAME: Morty
-    tty: true
-    stdin_open: true
+      ENABLE_AUTOPAUSE: "TRUE"
+      OVERRIDE_SERVER_PROPERTIES: "TRUE"
+      MAX_TICK_TIME: "-1"
+      # More aggressive settings for demo purposes
+      AUTOPAUSE_TIMEOUT_INIT: "30"
+      AUTOPAUSE_TIMEOUT_EST: "10"
     restart: unless-stopped
-    volumes:
-      - mine:/data
   mchi:
     image: itzg/minecraft-bedrock-server
     container_name: mine-hi
@@ -32,5 +32,5 @@ services:
       - mine-hi:/data
 
 volumes:
-  mine: {}
+  mc: {}
   mine-hi: {}
