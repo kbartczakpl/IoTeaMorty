@@ -50,18 +50,18 @@ services:
   #    - ./x/dbox/dropbox/Flexget/secretfile.yml:/config/secretfile.yml:ro
   #    - ./x/deluge/downloads:/downloads:ro
   #    - ./x/media/raid/videos:/videos
-  flexget:
-    image: wiserain/flexget
-    container_name: flexget
-    restart: always
-    environment:
-      - PUID=998
-      - PGID=998
-      - TZ=Europe/London
-      - FG_WEBUI_PASSWD=qweQWE123!@#
-      - FG_LOG_LEVEL=info
-    ports:
-      - 5050:5050
-    volumes:
-      - ./ss/flexget:/config
-      - ./ss/tank/Video:/tank/Video
+  # flexget:
+  #   image: wiserain/flexget
+  #   container_name: flexget
+  #   restart: always
+  #   environment:
+  #     - PUID=998
+  #     - PGID=998
+  #     - TZ=Europe/London
+  #     - FG_WEBUI_PASSWD=qweQWE123!@#
+  #     - FG_LOG_LEVEL=info
+  #   ports:
+  #     - 5050:5050
+  #   volumes:
+  #     - ./ss/flexget:/config
+  #     - ./ss/tank/Video:/tank/Video
