@@ -1,23 +1,21 @@
 version: '2.1'
 services:
-  mc:
-    image: itzg/minecraft-server
+  mc22-10:
+    image: itzg/minecraft-bedrock-server
+    container_name: mine-hi
     ports:
-      - "25565:25565"
-    volumes:
-      - "mcj3:/data"
-    tty: true
-    stdin_open: true
+      - 19132:19132/udp
     environment:
       EULA: "TRUE"
-      ENABLE_AUTOPAUSE: "TRUE"
-      OVERRIDE_SERVER_PROPERTIES: "TRUE"
-      MAX_TICK_TIME: "-1"
-      JVM_DD_OPTS: " disable.watchdog:true"
-      # More aggressive settings for demo purposes
-      AUTOPAUSE_TIMEOUT_INIT: "30"
-      AUTOPAUSE_TIMEOUT_EST: "10"
+      MODE: survival
+      DIFFICULTY: normal
+      SERVER_NAME: Morty
+    tty: true
+    stdin_open: true
     restart: unless-stopped
+    volumes:
+      - mine_23-11:/data
 
 volumes:
-  mcj3: {}
+  mine_23-11: {}
+
