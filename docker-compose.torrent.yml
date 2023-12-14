@@ -1,0 +1,28 @@
+version: "2.1"
+services:
+  transmission-rss:
+    image: nning2/transmission-rss
+    container_name: transmission-rss
+    restart: always
+    volumes:
+      - /opt/appdata/transmission-rss/transmission-rss.conf:/etc/transmission-rss.conf
+      - /opt/appdata/transmission-rss/data:/home/ruby/transmission-rss/data
+  transmission:
+    image: lscr.io/linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=998
+      - PGID=998
+      - TZ=Europe/London
+      - TRANSMISSION_WEB_HOME=/combustion-release/ #optional
+      - USER=hi #optional
+      - PASS=hi #optional
+    volumes:
+      - /opt/appdata/transmission:/config
+      - /media/transmission/downloads:/downloads
+      - /media/transmission/watch:/watch
+    ports:
+      - 9091:9091
+      - 55555:55555
+      - 55555:55555/udp
+    restart: unless-stopped

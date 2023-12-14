@@ -13,14 +13,13 @@ docker create \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Europe/London \
-  -e TRANSMISSION_WEB_HOME=/combustion-release/ `#optional` \
+  -e TRANSMISSION_WEB_HOME=/combustion-release/ \
   -e USER=hi  \
   -e PASS=qweqwe  \
   -p 8091:9091 \
-  -p 51414:51413 \
-  -p 51414:51413/udp \
-  -v /media/docker/${NAME}/:/config \
-  -v /media/docker/${NAME}/tmp/:/transmission-web-control/tmp/transmission \
+  -p 55555:55555 \
+  -p 55555:55555/udp \
+  -v /media/docker/${NAME}/config:/config \
   -v /media/${NAME}/downloads/:/downloads \
   -v /media/${NAME}/watch/:/watch \
   --restart unless-stopped \

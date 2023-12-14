@@ -1,0 +1,21 @@
+version: '2.1'
+services:
+  mc22-10:
+    image: itzg/minecraft-bedrock-server
+    container_name: mine-hi
+    ports:
+      - 19132:19132/udp
+    environment:
+      EULA: "TRUE"
+      MODE: survival
+      DIFFICULTY: normal
+      SERVER_NAME: Morty
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    volumes:
+      - mine_23-11:/data
+
+volumes:
+  mine_23-11: {}
+
