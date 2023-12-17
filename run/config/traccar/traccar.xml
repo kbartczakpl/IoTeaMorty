@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE properties SYSTEM 'http://java.sun.com/dtd/properties.dtd'>
+<properties>
+    <entry key='config.default'>./conf/default.xml</entry>
+    <entry key='database.driver'>com.mysql.jdbc.Driver</entry>
+    <entry key='database.url'>jdbc:mysql://10.10.0.98:3306/traccar?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC</entry>
+    <entry key='database.user'>traccar</entry>
+    <entry key='database.password'>emJEQZpKYZcRAc23</entry>
+    <entry key='mail.smtp.starttls.enable'>true</entry>
+    <entry key='mail.smtp.host'>smtp.gmail.com</entry>
+    <entry key='mail.smtp.port'>587</entry>
+    <entry key='mail.smtp.from'>no-replay@bartczak.eu</entry>
+    <entry key='mail.smtp.username'>no-replay@bartczak.eu</entry>
+    <entry key='mail.smtp.password'>PZLEbAcoTx3Pw6</entry>
+</properties>
